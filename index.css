@@ -1,0 +1,102 @@
+body {
+    margin: 0; 
+}
+
+h3 {
+    font-size: 50px;
+    color: #EEE;
+    font-size: 40px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 35.893px;
+    display: flex;
+    width: 149px;
+    flex-direction: column;
+    flex-shrink: 0;   
+    margin-left: 15px;
+    margin-right: 15px;  
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    background-color: #6D28D9;    
+    text-align: center; 
+    width: 575px;
+    height: 500px;
+    flex-wrap: wrap;
+}
+
+.container div {
+    padding: 5px 15px 5px 15px;  
+    
+}
+
+#score-background {
+    width: 155px;
+    height: 120px;
+    background-color: #000;
+    flex-shrink: 0;
+    border-radius: 5px;  
+    margin-top: -25px;  
+}
+
+#score-background p {
+    margin: 0;
+    color: #F94F6D;
+    font-size: 100px;
+    font-family: 'Silkscreen', cursive;
+    font-style: normal;
+    font-weight: 800; 
+}
+
+.buttons-panel{
+    display: flex;
+    margin-top: 25px;
+    column-gap: 0.7rem; 
+    margin-bottom: 20px;  
+}
+
+button{
+    border-color: #fff;
+    color: #fff;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 8px;
+    flex:auto;    
+}
+
+#container-top{
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    background-color: #6D28D9;
+
+}
+
+
+#container-footer{
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    background-color: #6D28D9;
+
+}
+
+#timer{
+    background-color: #000;
+    color: #fff;
+    padding: 10px 15px 10px 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 5px;  
+}
+
+#winner{
+    display: block;
+    padding: 20px;
+    visibility: hidden;
+    color: #EEE;
+    
+}
