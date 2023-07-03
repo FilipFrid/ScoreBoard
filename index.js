@@ -88,8 +88,7 @@ function startCountdown() {
         document.getElementById("timer").textContent = "END OF GAME";
         document.getElementById("timer").style.backgroundColor = "#F94F6D";
         document.getElementById("timer").style.color = "#000";
-        winnerIs ();
-        
+        winnerIs ();        
       }
     }
 
@@ -105,15 +104,43 @@ function winnerIs (){
         document.getElementById("winner").innerText = "The Winner is HOME";
         document.getElementById("winner").style.visibility = "visible";
         document.getElementById("home").style.backgroundColor = "#D926D0";
+        confetti({
+            spread: 360,
+            startVelocity: 60,
+            particleCount: 350
+          });
         
                   
             
         } else if (sumHome < sumGuest) {
-        document.getElementById("winner").innerText = "The Winner is GUEST";
+        document.getElementById("winner").innerText = "The Winner is AWAY";
         document.getElementById("winner").style.visibility = "visible"; 
-        document.getElementById("guest").style.backgroundColor = "#D926D0"; 
+        document.getElementById("guest").style.backgroundColor = "#D926D0";
+        confetti({
+            spread: 360,
+            startVelocity: 60,
+            particleCount: 350
+          }); 
                
         } else {
         document.getElementById("winner").innerText = "Draw. Start New Game.";
         document.getElementById("winner").style.visibility = "visible";
 }}
+
+
+
+var myCanvas = document.createElement('canvas');
+document.body.appendChild(myCanvas);
+
+var myConfetti = confetti.create(myCanvas, {
+  resize: true,
+  useWorker: true
+});
+myConfetti({
+  particleCount: 100,
+  spread: 160
+  // any other options from the global
+  // confetti function
+});
+
+

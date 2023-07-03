@@ -6,42 +6,45 @@
 </style>
     </head>
     <body>
-        <div class="container">
-            <div id="container-top">
-                <span id="timer">00:00</span>
-                <span id="winner">00000</span>    
-            </div>
-            
-            <div id="home">
-                <h3>HOME</h3>
-                <div id="score-background"> 
-                <p id="score-home">0</p>
+        <div id="background-overlay">
+            <div class="container">
+                <div id="container-top">
+                    <span id="timer">00:00</span>
+                    <span id="winner">00000</span>    
                 </div>
-                <div class="buttons-panel">  
-                <button onclick="homeAdd1Point()">+1</button>
-                <button onclick="homeAdd2Points()">+2</button>
-                <button onclick="homeAdd3Points()">+3</button>      
-                </div> 
-            </div>
-            
-            <div id="guest">
-                <h3>AWAY</h3>
-                <div id="score-background">
-                <p id="score-guest">0</p>
+                
+                <div id="home">
+                    <h3>HOME</h3>
+                    <div id="score-background"> 
+                    <p id="score-home">0</p>
+                    </div>
+                    <div class="buttons-panel">  
+                    <button onclick="homeAdd1Point()">+1</button>
+                    <button onclick="homeAdd2Points()">+2</button>
+                    <button onclick="homeAdd3Points()">+3</button>      
+                    </div> 
                 </div>
-                <div class="buttons-panel">
-                <button onclick="guestAdd1Point()">+1</button>
-                <button onclick="guestAdd2Points()">+2</button>
-                <button onclick="guestAdd3Points()">+3</button>
-                </div> 
+                
+                <div id="guest">
+                    <h3>AWAY</h3>
+                    <div id="score-background">
+                    <p id="score-guest">0</p>
+                    </div>
+                    <div class="buttons-panel">
+                    <button onclick="guestAdd1Point()">+1</button>
+                    <button onclick="guestAdd2Points()">+2</button>
+                    <button onclick="guestAdd3Points()">+3</button>
+                    </div> 
+                </div>
+                
+                <div id="container-footer">
+                    <button onclick="newGame()">New Game</button>    
+                </div>
+                
             </div>
-            
-            <div id="container-footer">
-                <button onclick="newGame()">New Game</button>    
-            </div>
-            
         </div>
-            
         <script src="index.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
     </body>
 </html>
