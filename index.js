@@ -1,46 +1,26 @@
-let scoreHome = document.getElementById("score-home")
-let scoreGuest = document.getElementById("score-guest")
-let sumHome = 0
-let sumGuest = 0
+let scoreHome = document.getElementById("score-home");
+let scoreGuest = document.getElementById("score-guest");
+let sumHome = 0;
+let sumGuest = 0;
 
-
-function homeAdd1Point () {
-    sumHome +=1;
-    scoreHome.innerText = sumHome
-     
+// Function to add points to Home team
+function addHomePoints(Points) {
+  sumHome += Points;
+  scoreHome.innerText = sumHome;
+   
 }
 
-function homeAdd2Points () {
-    sumHome +=2;
-    scoreHome.innerText = sumHome
-    
+// Function to add points to Guest team
+function addGuestPoints(Points) {
+  sumGuest += Points;
+  scoreGuest.innerText = sumGuest;
+   
 }
 
-function homeAdd3Points () {
-    sumHome +=3;
-    scoreHome.innerText = sumHome
-    
-}
-
-function guestAdd1Point () {
-    sumGuest +=1;
-    scoreGuest.innerText = sumGuest
-      
-}
-
-function guestAdd2Points () {
-    sumGuest +=2;
-    scoreGuest.innerText = sumGuest
-    
-}
-
-function guestAdd3Points () {
-    sumGuest +=3;
-    scoreGuest.innerText = sumGuest
-    
-}
-
-function newGame () {
+/* Function to start new game
+1. When user clicks the button countdown starts
+2. Score buttons are visible */
+function newGame() {
     document.getElementById("timer").style.backgroundColor = "#000";
     document.getElementById("timer").style.color = "#fff";
     document.getElementById("home").style.backgroundColor = "initial";
@@ -49,13 +29,32 @@ function newGame () {
     scoreGuest.innerText = 0;
     scoreHome.innerText = 0;
     sumHome = 0;
-    sumGuest = 0;   
+    sumGuest = 0;
+
+    // Start countdown
     startCountdown();
+    
+    function showButtonsPanel() {
+      const buttonsPanel = document.querySelectorAll(".buttons-panel");
+      buttonsPanel.forEach(function(panel) {
+        panel.style.display = 'flex';
+      });
+    }
+
+    // Show buttons panel when new game starts
+    showButtonsPanel()
+
+    // Disable score buttons
+    const buttons = document.getElementsByClassName('btn');
+
+    for (let button of buttons) {
+    button.disabled = false;  
+    }
+
 }
 
 
-/* Countdown Timer  */
-
+// Countdown Timer
 function startCountdown() {
 
     // Set the countdown time (in seconds)
@@ -88,7 +87,16 @@ function startCountdown() {
         document.getElementById("timer").textContent = "END OF GAME";
         document.getElementById("timer").style.backgroundColor = "#F94F6D";
         document.getElementById("timer").style.color = "#000";
+
+        // Call function WinnerIs
         winnerIs ();        
+
+        // Disable score buttons
+        const buttons = document.getElementsByClassName('btn');
+
+        for (let button of buttons) {
+        button.disabled = true;  
+        }
       }
     }
 
@@ -99,23 +107,26 @@ function startCountdown() {
     
 }
 
-function winnerIs (){
+// Function WinnerIs shows final result
+function winnerIs() {
         if (sumHome > sumGuest) {
         document.getElementById("winner").innerText = "The Winner is HOME";
         document.getElementById("winner").style.visibility = "visible";
         document.getElementById("home").style.backgroundColor = "#D926D0";
+        
+        // Activates confetti for the winner
         confetti({
             spread: 360,
             startVelocity: 60,
             particleCount: 350
-          });
-        
-                  
-            
+          });       
+  
         } else if (sumHome < sumGuest) {
         document.getElementById("winner").innerText = "The Winner is AWAY";
         document.getElementById("winner").style.visibility = "visible"; 
         document.getElementById("guest").style.backgroundColor = "#D926D0";
+        
+        // Activates confetti for the winner
         confetti({
             spread: 360,
             startVelocity: 60,
