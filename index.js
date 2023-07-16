@@ -2,6 +2,8 @@ let scoreHome = document.getElementById("score-home");
 let scoreGuest = document.getElementById("score-guest");
 let sumHome = 0;
 let sumGuest = 0;
+let wonGamesHome = 0;
+let wonGamesGuest = 0;
 
 // Function to add points to Home team
 function addHomePoints(Points) {
@@ -33,16 +35,17 @@ function newGame() {
 
     // Start countdown
     startCountdown();
-    
+
+    // Function makes buttons visible when new game starts
     function showButtonsPanel() {
       const buttonsPanel = document.querySelectorAll(".buttons-panel");
       buttonsPanel.forEach(function(panel) {
-        panel.style.display = 'flex';
+        panel.style.visibility = 'visible';
       });
     }
 
     // Show buttons panel when new game starts
-    showButtonsPanel()
+    showButtonsPanel();
 
     // Disable score buttons
     const buttons = document.getElementsByClassName('btn');
@@ -58,7 +61,7 @@ function newGame() {
 function startCountdown() {
 
     // Set the countdown time (in seconds)
-    const countdownTime = 10; // 1 minute (60)
+    const countdownTime = 5; // 1 minute (60)
 
     // Calculate the end time
     const endTime = new Date().getTime() + countdownTime * 1000;
@@ -97,6 +100,9 @@ function startCountdown() {
         for (let button of buttons) {
         button.disabled = true;  
         }
+
+        // Adds a result of each game
+        addResult(sumHome, sumGuest); 
       }
     }
 
@@ -107,12 +113,13 @@ function startCountdown() {
     
 }
 
-// Function WinnerIs shows final result
+// Function WinnerIs shows result after each game
 function winnerIs() {
         if (sumHome > sumGuest) {
         document.getElementById("winner").innerText = "The Winner is HOME";
         document.getElementById("winner").style.visibility = "visible";
-        document.getElementById("home").style.backgroundColor = "#D926D0";
+        document.getElementById("home").style.backgroundColor = "#D926D0"; 
+        wonGamesHome++;    
         
         // Activates confetti for the winner
         confetti({
@@ -125,6 +132,7 @@ function winnerIs() {
         document.getElementById("winner").innerText = "The Winner is AWAY";
         document.getElementById("winner").style.visibility = "visible"; 
         document.getElementById("guest").style.backgroundColor = "#D926D0";
+        wonGamesGuest++;
         
         // Activates confetti for the winner
         confetti({
@@ -138,4 +146,115 @@ function winnerIs() {
         document.getElementById("winner").style.visibility = "visible";
 }}
 
+// Add results to table
+let roundCounter = 0; 
+   
+    function addResult(sumHome, sumGuest) {
+      roundCounter++;
+ 
+      let homeCell = document.getElementById("home-round" + roundCounter);
+          homeCell.innerHTML = sumHome;
+  
+      let guestCell = document.getElementById("guest-round" + roundCounter);
+          guestCell.innerHTML = sumGuest;
+
+  
+          if (sumHome > sumGuest) {
+            homeCell.style.color = "#94D926";
+            guestCell.style.color = "D92771";
+        
+        } else if (sumGuest > sumHome) {
+          homeCell.style.color = "D92771";
+          guestCell.style.color = "#94D926";
+        
+        } else {
+          homeCell.style.color = "#ffffff";
+          guestCell.style.color = "#ffffff";
+        }
+
+        // Announcing the champion (overall winning player)
+        if (roundCounter === 8) {
+
+        // Hide all elements in container except "New Game" button  
+        document.getElementById("container-top").style.visibility = "hidden";
+        document.getElementById("home").style.visibility = "hidden";
+        document.getElementById("guest").style.visibility = "hidden";
+        document.getElementById("winner").style.visibility = "hidden";
+        document.getElementById("container-footer").style.visibility = "hidden";
+                  
+        // Hide buttons in panels
+        const buttonsPanel = document.querySelectorAll(".buttons-panel");
+        buttonsPanel.forEach(function(panel) {
+        panel.style.visibility = 'hidden';
+        });
+
+
+        // Determine who is the champion
+        let championName = "";
+
+        if (wonGamesHome > wonGamesGuest) {
+          championName = "Home";
+          
+        } else if (wonGamesHome < wonGamesGuest) {
+            championName = "Away";
+
+        } else {
+          championName = "Noone";
+
+        }
+        
+
+        // Display who is the champion
+        const container = document.querySelector(".container");
+        const h1 = document.createElement("h1");
+        h1.textContent = "The champion";
+
+        const p = document.createElement("p");
+        p.id = "championNameId";
+         
+        const icon = document.createElement("i");
+        icon.className = "icon-medal fa-solid fa-medal fa-2xl";
+
+        
+
+        const style = document.createElement ("style");
+        style.textContent = `
+          h1 {
+            font-size: 50px;
+            color: #ffffff;  
+            margin-top:-600px;
+            text-transform: uppercase;            
+          }
+
+          .icon-medal {
+            margin-top: 100px;
+            display:block;
+          }
+
+          #championNameId {
+            margin: 0;
+            padding: 10px;
+          }
+        `;
+
+          document.head.appendChild(style);
+          container.appendChild(h1);
+          h1.appendChild(p);
+          document.getElementById("championNameId").innerHTML = championName;
+          p.appendChild(icon);
+          
+    } 
+}
+
+
+  
+
+
+
+
+
+
+
+
+  
 

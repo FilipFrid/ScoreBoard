@@ -1,6 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="index.css">
         <style>@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');</style>
     </head>
@@ -9,7 +10,7 @@
             <div class="container">
                 <div id="container-top">
                     <span id="timer">00:00</span>
-                    <span id="winner">00000</span>    
+                    <span id="winner">00000</span>
                 </div>
                 
                 <div id="home">
@@ -37,14 +38,50 @@
                 </div>
                 
                 <div id="container-footer">
-                    <button onclick="newGame()">New Game</button>    
-                </div>
-                
+                    <button onclick="newGame()">New Game <i class="fa-solid fa-basketball"></i></button>    
+                </div>   
+
+            </div>
+
+            <div class="scoreboard">
+                <table id="scoreTable">
+                <tr>
+                    <th>Game</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>8</th>                  
+                </tr>
+                <tr>
+                    <th>Home</th>
+                    <td id="home-round1"></td>
+                    <td id="home-round2"></td>
+                    <td id="home-round3"></td>
+                    <td id="home-round4"></td>
+                    <td id="home-round5"></td>
+                    <td id="home-round6"></td>
+                    <td id="home-round7"></td>
+                    <td id="home-round8"></td>
+                </tr>
+                <tr>
+                    <th>Away</th>
+                    <td id="guest-round1"></td>
+                    <td id="guest-round2"></td>
+                    <td id="guest-round3"></td>
+                    <td id="guest-round4"></td>
+                    <td id="guest-round5"></td>
+                    <td id="guest-round6"></td>
+                    <td id="guest-round7"></td>
+                    <td id="guest-round8"></td>
+                </tr>
+                </table>
             </div>
         </div>
-
         <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
         <script src="index.js"></script>
-        
     </body>
 </html>

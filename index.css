@@ -1,6 +1,7 @@
 body {
     margin: 0;
     background-color: #6D28D9;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 h3 {
@@ -39,7 +40,7 @@ h3 {
     width: 575px;
     height: 580px;
     flex-wrap: wrap;
-    margin: 100px auto;
+    margin: 100px auto 30px auto;
     border: 10px #260E4D solid;
     border-radius: 25px;
     background-color: #6D28D9;
@@ -69,7 +70,7 @@ h3 {
 
 .buttons-panel {
     display: flex;
-    display: none;
+    visibility: hidden;
     margin-top: 25px;
     column-gap: 0.7rem; 
     margin-bottom: 20px;  
@@ -111,3 +112,30 @@ button {
     visibility: hidden;
     color: #EEE; 
 }
+
+.scoreboard {
+  margin: auto;
+  text-align: center; 
+  width: 575px;
+  display: flex;
+  
+}
+
+table {
+  justify-content: center;
+  border-collapse: collapse;
+  font-size: 12px;
+  border-style: hidden;
+  margin: auto;
+  
+}
+
+th, td {
+  padding: 5px 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+th {
+  color: #fff;
+} 
